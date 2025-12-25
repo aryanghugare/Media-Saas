@@ -84,13 +84,14 @@ document.body.removeChild(link);
             <div className="card-body">
               <h2 className="card-title mb-4">Upload an Image</h2>
               <div className="form-control">
-                <label className="label">
+                <label className="label" htmlFor="image-file">
                   <span className="label-text">Choose an image file</span>
                 </label>
                 <input
                   type="file"
                   onChange={handleFileUpload}
                   className="file-input file-input-bordered file-input-primary w-full"
+                id ="image-file"
                 />
               </div>
 
@@ -105,6 +106,7 @@ document.body.removeChild(link);
                   <h2 className="card-title mb-4">Select Social Media Format</h2>
                   <div className="form-control">
                     <select
+                    title='Select Social Media Format'
                       className="select select-bordered w-full"
                       value={selectedFormat}
                       onChange={(e) =>
