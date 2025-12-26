@@ -13,7 +13,7 @@ const prisma = new PrismaClient({ adapter })
 cloudinary.config({
     cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET 
+    api_secret: process.env.CLOUDINARY_API_SECRET_KEY 
 });
 
 interface CloudinaryUploadResult {
@@ -68,7 +68,7 @@ uploadStream.end(buffer);
                 publicId: result.public_id,
                 originalSize: originalSize,
                 compressedSize: String(result.bytes),
-               duration : String(result.duration) || "", // little wrong 
+               duration : Number(result.duration) , 
             }
         })
 
