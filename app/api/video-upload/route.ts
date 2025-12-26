@@ -31,9 +31,10 @@ if (!userId) {
 }
 
 try {
-if(!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET){
+if(!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET_KEY){
     return NextResponse.json({ error: 'Cloudinary configuration missing' }, { status: 500 });
 }
+console.log("hiiioooo")
 const formData = await request.formData();
 const file = formData.get('file') as File | null;
 const title = formData.get('title') as string ;
@@ -72,7 +73,7 @@ uploadStream.end(buffer);
             }
         })
 
-
+return NextResponse.json(video);
     
 } catch (error: any) {
     console.error('Cloudinary upload video error:', error);

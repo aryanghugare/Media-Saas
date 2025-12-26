@@ -15,8 +15,8 @@ const router = useRouter();
 const MAX_FILE_SIZE = 60 * 1024 * 1024;
 
 const handleSubmit = async (e : React.FormEvent) => {
-setNotification("");
 e.preventDefault();
+setNotification("");
 if(!file) return ;
 if(file.size > MAX_FILE_SIZE) {
 setNotification("File size exceeds 60 MB limit.");
@@ -55,6 +55,15 @@ if(response.status === 200) {
   return (
     <div className="container mx-auto p-4">
           <h1 className="text-2xl font-bold mb-4">Upload Video</h1>
+
+          {notification && (
+            <div className="mb-4">
+              <div className={`alert ${notification.toLowerCase().includes('success') ? 'alert-success' : 'alert-error'} shadow-lg`}>
+                <div>{notification}</div>
+              </div>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="label" htmlFor="title">
