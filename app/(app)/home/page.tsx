@@ -64,7 +64,11 @@ console.log(videos)
                 videos.map((video) => (
                     <VideoCard
                         key={video.id}
-                        video={video}
+                        video={{
+                            ...video,
+                            originalSize: String(video.originalSize),
+                            compressedSize: String(video.compressedSize),
+                        }}
                         onDownload={handleDownload}
                     />
                 ))
